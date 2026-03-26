@@ -1,12 +1,18 @@
-# Your name:
-# Your student id:
-# Your email:
-# Who or what you worked with on this homework (including generative AI like ChatGPT):
+# Your name: Luca Scarpulla, Sofia Finelli, Kate Liechty
+# Your student id: 4858 7059, [FIA], [KATE]
+# Your email: lucays@umich.edu, sfinelli@umich.edu, kateliec@umich.edu
+# Who or what you worked with on this homework: Our group of three, Google/internet databases, some AI
+#
 # If you worked with generative AI also add a statement for how you used it.
-# e.g.:
-# Asked ChatGPT for hints on debugging and for suggestions on overall code structure
+#
+# We used GenAI for debugging issues with our code that couldn't be resolved between the 3 of us.
+# We completed the majority of this project together in person, 
+# so having the ability to openly communicate helped us and made our GenAI use more limited and effective.
+# GPT also helped us with some structural questions, and helped us understand the extra credit question and how to approach it.
 #
 # Did your use of GenAI on this assignment align with your goals and guidelines in your Gen AI contract? If not, why?
+#
+# Our use of GenAI aligned with all 3 of our indvidual GenAI contracts.
 #
 # --- ARGUMENTS & EXPECTED RETURN VALUES PROVIDED --- #
 # --- SEE INSTRUCTIONS FOR FULL DETAILS ON METHOD IMPLEMENTATION --- #
