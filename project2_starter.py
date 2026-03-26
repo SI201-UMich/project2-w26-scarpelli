@@ -280,7 +280,26 @@ def avg_location_rating_by_room_type(data) -> dict:
     # ==============================
     # YOUR CODE STARTS HERE
     # ==============================
-    pass
+    ratings_by_room_type = {}
+
+    for row in data:
+        room_type = row[5]
+        location_rating = row[6]
+
+        if location_rating == 0.0:
+            continue
+
+        if room_type not in ratings_by_room_type:
+            ratings_by_room_type[room_type] = []
+
+        ratings_by_room_type[room_type].append(location_rating)
+
+    averages = {}
+
+    for room_type in ratings_by_room_type:
+        averages[room_type] = sum(ratings_by_room_type[room_type]) / len(ratings_by_room_type[room_type])
+
+    return averages
     # ==============================
     # YOUR CODE ENDS HERE
     # ==============================
@@ -301,7 +320,20 @@ def validate_policy_numbers(data) -> list[str]:
     # ==============================
     # YOUR CODE STARTS HERE
     # ==============================
-    pass
+    invalid_listing_ids = []
+    valid_pattern = r"^(20\d{2}-00\d{4}STR|STR-000\d{4})$"
+
+    for row in data:
+        listing_id = row[1]
+        policy_number = row[2]
+
+        if policy_number == "Pending" or policy_number == "Exempt":
+            continue
+
+        if re.fullmatch(valid_pattern, policy_number) is None:
+            invalid_listing_ids.append(listing_id)
+
+    return invalid_listing_ids
     # ==============================
     # YOUR CODE ENDS HERE
     # ==============================
