@@ -204,7 +204,22 @@ def create_listing_database(html_path) -> list[tuple]:
     # ==============================
     # YOUR CODE STARTS HERE
     # ==============================
-    pass
+    listings = load_listing_results(html_path)
+    detailed_listings = []
+
+    for listing_title, listing_id in listings:
+        details = get_listing_details(listing_id)[listing_id]
+        detailed_listings.append((
+            listing_title,
+            listing_id,
+            details["policy_number"],
+            details["host_type"],
+            details["host_name"],
+            details["room_type"],
+            details["location_rating"]
+        ))
+
+    return detailed_listings
     # ==============================
     # YOUR CODE ENDS HERE
     # ==============================
@@ -227,7 +242,22 @@ def output_csv(data, filename) -> None:
     # ==============================
     # YOUR CODE STARTS HERE
     # ==============================
-    pass
+    sorted_data = sorted(data, key=lambda row: row[6], reverse=True)
+
+    with open(filename, "w", newline="", encoding="utf-8-sig") as file:
+        writer = csv.writer(file)
+        writer.writerow([
+            "Listing Title",
+            "Listing ID",
+            "Policy Number",
+            "Host Type",
+            "Host Name",
+            "Room Type",
+            "Location Rating"
+        ])
+
+        for row in sorted_data:
+            writer.writerow(row)
     # ==============================
     # YOUR CODE ENDS HERE
     # ==============================
