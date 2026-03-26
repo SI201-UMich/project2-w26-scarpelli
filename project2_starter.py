@@ -41,7 +41,38 @@ def load_listing_results(html_path) -> list[tuple]:
     # ==============================
     # YOUR CODE STARTS HERE
     # ==============================
-    pass
+    with open(html_path, "r", encoding="utf-8-sig") as file:
+        soup = BeautifulSoup(file, "html.parser")
+
+    listings = []
+
+    for script in soup.find_all("script"):
+        script_text = script.string or script.get_text()
+
+        if script_text and "niobeMinimalClientData" in script_text and "StaySearchResult" in script_text:
+            data = json.loads(script_text)
+
+            def find_stay_results(obj, results):
+                if isinstance(obj, dict):
+                    if obj.get("__typename") == "StaySearchResult":
+                        results.append(obj)
+                    for value in obj.values():
+                        find_stay_results(value, results)
+                elif isinstance(obj, list):
+                    for item in obj:
+                        find_stay_results(item, results)
+
+            stay_results = []
+            find_stay_results(data, stay_results)
+
+            for result in stay_results:
+                listing_title = result["listing"]["title"]
+                listing_id = str(result["listing"]["id"])
+                listings.append((listing_title, listing_id))
+
+            break
+
+    return listings
     # ==============================
     # YOUR CODE ENDS HERE
     # ==============================
@@ -70,7 +101,89 @@ def get_listing_details(listing_id) -> dict:
     # ==============================
     # YOUR CODE STARTS HERE
     # ==============================
-    pass
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    file_path = os.path.join(base_dir, "html_files", f"listing_{listing_id}.html")
+
+    with open(file_path, "r", encoding="utf-8-sig") as file:
+        soup = BeautifulSoup(file, "html.parser")
+
+    strings = list(soup.stripped_strings)
+
+    # policy_number
+    policy_number = "Pending"
+    for i, text in enumerate(strings):
+        if text == "Policy number:" or text.startswith("Policy number:"):
+            if text == "Policy number:":
+                raw_policy = strings[i + 1].strip() if i + 1 < len(strings) else ""
+            else:
+                raw_policy = text.split("Policy number:", 1)[1].strip()
+
+            raw_policy = raw_policy.replace("\ufeff", "").strip()
+            lower_policy = raw_policy.lower()
+
+            if "pending" in lower_policy:
+                policy_number = "Pending"
+            elif "exempt" in lower_policy:
+                policy_number = "Exempt"
+            else:
+                policy_number = raw_policy
+            break
+
+    # host_type
+    host_type = "regular"
+    for text in strings:
+        if "Superhost" in text:
+            host_type = "Superhost"
+            break
+
+    # host_name
+    host_name = ""
+    for text in strings:
+        if text.startswith("Hosted by "):
+            host_name = text.replace("Hosted by ", "", 1).strip()
+            break
+
+    # room_type
+    subtitle = ""
+    for text in strings:
+        if ("hosted by" in text.lower()) and (not text.startswith("Hosted by ")):
+            subtitle = text
+            break
+
+    if subtitle == "":
+        for i, text in enumerate(strings):
+            if text.startswith("Hosted by "):
+                if i > 0:
+                    subtitle = strings[i - 1]
+                break
+
+    if "Private" in subtitle:
+        room_type = "Private Room"
+    elif "Shared" in subtitle:
+        room_type = "Shared Room"
+    else:
+        room_type = "Entire Room"
+
+    # location_rating
+    location_rating = 0.0
+    for i in range(len(strings) - 1, -1, -1):
+        if strings[i] == "Location":
+            for candidate in strings[i + 1:i + 4]:
+                if re.fullmatch(r"\d\.\d", candidate):
+                    location_rating = float(candidate)
+                    break
+            if location_rating != 0.0:
+                break
+
+    return {
+        listing_id: {
+            "policy_number": policy_number,
+            "host_type": host_type,
+            "host_name": host_name,
+            "room_type": room_type,
+            "location_rating": location_rating
+        }
+    }
     # ==============================
     # YOUR CODE ENDS HERE
     # ==============================
