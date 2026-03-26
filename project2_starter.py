@@ -391,6 +391,7 @@ class TestCases(unittest.TestCase):
         html_list = ["467507", "1550913", "1944564", "4614763", "6092596"]
 
         # TODO: Call get_listing_details() on each listing id above and save results in a list.
+        details_list = []
         for listing_id in html_list:
             details_list.append(get_listing_details(listing_id))
     
