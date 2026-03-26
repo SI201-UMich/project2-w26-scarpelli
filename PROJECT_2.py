@@ -1,4 +1,3 @@
-# SI 201 HW4 (Library Checkout System)
 # Your name:
 # Your student id:
 # Your email:
