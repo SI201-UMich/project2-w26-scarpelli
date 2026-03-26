@@ -18,7 +18,7 @@ import os
 import csv
 import unittest
 import requests  # kept for extra credit parity
-
+import json
 
 # IMPORTANT NOTE:
 """
