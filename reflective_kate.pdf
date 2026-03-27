@@ -1,0 +1,63 @@
+Reflective Questions
+For this section, each team member must submit their own reflection as a separate file.
+You may write your responses in a .txt file or in another document format and export it to a
+.pdf file. Name your file reflective
+<first
+name>.txt or
+_
+_
+reflective
+<first
+name>.pdf. These questions are intentionally open-ended so there
+are no right or wrong answers. As long as your responses are paragraph-length, thoughtful, and
+well reasoned, you will receive full credit.
+In this project, you used web-scraping to collect information from Airbnb to determine whether
+hosts complied with San Francisco’s rental laws. These regulations rely on multiple parties to
+maintain accountability: hosts must register with the city’s planning office, Airbnb must
+accurately display policy numbers, and third parties scrape data and file complaints.
+The questions below ask you to reflect on whether the current system effectively holds hosts
+and platforms accountable, along with the legal and ethical issues associated with
+web-scraping.
+
+
+Do you think this current system provides adequate accountability around short-term
+rentals in San Francisco? In your response, describe why you believe the system is
+adequate or inadequate. If you believe the system is inadequate, discuss a possible
+change in actions required to improve accountability in this system. You may refer to the
+SWE Code of Ethics as you think through your response.
+
+I think the current system provides some level of adequacy especially when it comes to allowing 
+multiple parties, like hosts, Airbnb, and third parties, to contribute to maintaining accountability. 
+However, to me, the system fails at consistently enforcing this accountability. I think this because 
+the government only investigates listings after receiving a complaint, which makes the system dependent 
+on others to report issues. One possible change that could improve the system’s accountability could be 
+requiring more direct verification of listings before they are allowed to be posted, instead of relying 
+mainly on complaints and outside investigations.
+
+
+As discussed in the introduction, the legality of web scraping is still uncertain in the US.
+Skim through the Legal Issues section of Web Scraping in the US on Wikipedia and this
+article about the legal issues with the Computer Fraud and Abuse Act, and describe at
+least one factor you believe is important to consider when discussing the legality of web
+scraping and why.
+
+One factor I believe is important to consider when discussing the legality of web scraping is whether 
+the data is publicly accessible or restricted. This is so important because even if data is available online, 
+websites may still have rules about how that data can be collected and used. Another factor I think is important 
+to take into consideration is whether the scraping follows the platform’s specific terms of service because violating 
+those terms can create legal issues even if the actual information isn't private.
+
+
+Scraping public data does not always lead to positive results for society. For example,
+look to Facebook–Cambridge Analytica data scandal - Wikipedia or Clearview AI -
+Wikipedia. Many argue that using someone’s personal data without their consent (even if
+publicly provided) is unethical. Web scraping requires thoughtful intervention. Develop at
+least two guidelines you think are important to consider when deciding whether to do
+web scraping.
+
+The first guideline I think is important to consider when deciding whether to do web scraping is whether the 
+data involves people’s personal information because even if the data is public, using it without people's awareness 
+and consent can still be harmful and is not ethical and can create mistrust in the future also. Another important 
+guideline is making sure the data is being used for a clear and responsible purpose. Specifically, the data should 
+only be used for specifically what it is said it will be used for, nothing additional. This is important because 
+scraping should not be used in ways that could negatively impact individuals or misuse their information in any way.
