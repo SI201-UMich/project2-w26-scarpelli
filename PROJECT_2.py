@@ -1,5 +1,5 @@
 # Your name: Luca Scarpulla, Sofia Finelli, Kate Liechty
-# Your student id: 4858 7059, 3009 2944, [KATE]
+# Your student id: 4858 7059, 3009 2944, 1035 3225
 # Your email: lucays@umich.edu, sfinelli@umich.edu, kateliec@umich.edu
 # Who or what you worked with on this homework: Our group of three, Google/internet databases, some AI
 #
